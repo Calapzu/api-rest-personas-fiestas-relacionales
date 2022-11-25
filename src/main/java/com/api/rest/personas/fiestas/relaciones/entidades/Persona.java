@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "perosnas")
+@Table(name = "personas")
 public class Persona {
 
     @Id
@@ -20,10 +20,10 @@ public class Persona {
     public Persona() {
     }
 
-    @OneToMany(mappedBy = "persona")
+    @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
     private Set<Habilidad> habilidades = new HashSet<>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JsonBackReference
     @JoinTable(name = "personas_fiestas", joinColumns = @JoinColumn(name = "persona_id", referencedColumnName = "persona_id"),
             inverseJoinColumns = @JoinColumn(name = "fiesta_id", referencedColumnName = "fiesta_id"))

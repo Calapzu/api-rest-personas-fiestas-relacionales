@@ -13,7 +13,7 @@ public class Fiesta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "persona_id")
+    @Column(name = "fiesta_id")
     private long id;
 
     private String ubicacion;
@@ -23,7 +23,8 @@ public class Fiesta {
     private Date fecha;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "personas_fiestas", joinColumns = @JoinColumn(name = "persona_id", referencedColumnName = "persona_id" ))
+    @JoinTable(name = "personas_fiestas", joinColumns = @JoinColumn(name = "fiesta_id", referencedColumnName = "fiesta_id" ),
+            inverseJoinColumns = @JoinColumn(name = "persona_id", referencedColumnName = "persona_id") )
     private Set<Persona> personas = new HashSet<>();
 
     public long getId() {

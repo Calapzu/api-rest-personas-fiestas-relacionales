@@ -10,7 +10,7 @@ public class Habilidad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "persona_id")
+    @Column(name = "habilidad_id")
     private long id;
 
     private String nombre;
